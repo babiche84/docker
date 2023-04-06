@@ -17,5 +17,6 @@ jobs:
     - name: Build & Push Docker Caddy Cloudflare image
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "babiche84" --password-stdin
-        docker build . --file Dockerfile --tag babiche84/caddy_cloudflare:$(date +%s)
-        docker push babiche84/caddy_cloudflare:$(date +%s)
+        #docker build . --file Dockerfile --tag babiche84/caddy_cloudflare:$(date +%s)
+        docker image build -t babiche84/caddy_cloudflare:v1 .
+        docker push babiche84/caddy_cloudflare:v1
