@@ -2,9 +2,9 @@ name: Caddy Cloudflare
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dockercaddycloudflare" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dockercaddycloudflare" ]
 
 jobs:
 
@@ -14,5 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag caddyCloudFlare:$(date +%s)
+    - name: Build & Push Docker Caddy Cloudflare image
+      run: |
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "babiche84" --password-stdin
+        #docker build . --file Dockerfile --tag babiche84/caddy_cloudflare:$(date +%s)
+        docker image build -t babiche84/caddy_cloudflare:latest .
+        docker push babiche84/caddy_cloudflare:latest
