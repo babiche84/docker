@@ -18,4 +18,4 @@ jobs:
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "babiche84" --password-stdin
         docker build . --file Dockerfile --tag caddycloudflare:$(date +%s)
-        docker push babiche84/caddy_cloudflare
+        docker push babiche84/caddy_cloudflare:$(date +%s)
