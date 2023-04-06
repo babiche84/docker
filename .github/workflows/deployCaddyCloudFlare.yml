@@ -14,5 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag caddycloudflare:$(date +%s)
+    - name: Build & Push Docker Caddy Cloudflare image
+      run: |
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "babiche84" --password-stdin
+        docker build . --file Dockerfile --tag caddycloudflare:$(date +%s)
+        docker push babiche84/caddy_cloudflare
