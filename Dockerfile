@@ -4,10 +4,10 @@
 
 FROM caddy:builder AS builder
 
-#RUN caddy-builder \
-RUN xcaddy build \
-    --with github.com/caddy-dns/cloudflare
-    #github.com/caddy-dns/cloudflare
+RUN caddy-builder \
+#RUN xcaddy build dockercaddycloudflare \
+    #--with github.com/caddy-dns/cloudflare
+    github.com/caddy-dns/cloudflare
 
 FROM caddy:latest
 
