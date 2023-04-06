@@ -2,9 +2,9 @@ name: Caddy Cloudflare
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dockercaddycloudflare" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dockercaddycloudflare" ]
 
 jobs:
 
@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag caddyCloudFlare:$(date +%s)
+      run: docker build . --file Dockerfile --tag caddycloudflare:$(date +%s)
